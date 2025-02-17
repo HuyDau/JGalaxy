@@ -58,18 +58,17 @@ public class UserService implements IUserService {
 
     @Override
     public Response loginUser(LoginRequest loginRequest) {
-        User user = userRepo.findByEmail(loginRequest.getEmail()).orElseThrow(() -> new NotFoundException("Email Not Found"));
-        if(!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+        User user = userRepo.findByEmail(loginRequest.getEmail()).orElseThrow(()-> new NotFoundException("Email not found"));
+        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())){
             throw new InvalidCredentialsException("Password does not match");
         }
-
         String token = jwtUtils.generateToken(user);
 
         return Response.builder()
                 .status(200)
-                .message("Login Success")
+                .message("User Successfully Logged In")
                 .token(token)
-                .expirationTime("6 Month")
+                .expirationTime("7 days")
                 .role(user.getRole().name())
                 .build();
     }
