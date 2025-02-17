@@ -21,15 +21,6 @@ public class JwtUtils {
     private static final long EXPIRATION_TIME_IN_MILLISEC = 1000L * 60L *60L *24L * 30L * 6L; //expirers 6 months
     private SecretKey key;
 
-    @Value("${secreteJwtString}")
-    private String secreteJwtString; //Make sure the value in the application properties is 32characters or long
-
-    @PostConstruct
-    private void init(){
-        byte[] keyBytes = secreteJwtString.getBytes(StandardCharsets.UTF_8);
-        this.key = new SecretKeySpec(keyBytes, "HmacSHA256");
-    }
-
     public String generateToken(User user){
         String username = user.getEmail();
         return generateToken(username);
