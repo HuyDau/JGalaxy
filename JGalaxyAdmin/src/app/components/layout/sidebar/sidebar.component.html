@@ -1,0 +1,21 @@
+<div class="sidebar" [class.closed]="!isSidebarOpen()">
+    <div class="head" (click)="toggleSidebar()">
+        @if(isSidebarOpen()){<h1 class="view fade-in">J Galaxy</h1> }
+        @else{<h1>J</h1>}
+    </div>
+    <ul class="menu">
+        <li *ngFor="let item of menuItems">
+            <a *ngIf="!item.children" [routerLink]="item.route" class="menu-item">
+                <i [class]="item.icon"></i> {{ isSidebarOpen() ? item.title : '' }}
+            </a>
+            <div *ngIf="item.children" class="menu-item" (click)="toggleSubmenu(item.title)">
+                <i [class]="item.icon"></i> {{ isSidebarOpen() ? item.title : '' }}
+            </div>
+            <ul [@submenuAnimation]="activeMenu(item.title)" class="submenu">
+                <li *ngFor="let sub of item.children">
+                    <a [routerLink]="sub.route">{{ isSidebarOpen() ? sub.title : ''}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

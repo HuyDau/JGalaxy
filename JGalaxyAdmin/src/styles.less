@@ -1,4 +1,344 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "primeicons/primeicons.css";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --Bg-main-color: #000;
+    --Bg-pink-deep: pink;
+    --Bg-pink: #ffd7de;
+
+    --Text-white: #fff;
+    --Text-black: #101010;
+    --Text-pink: pink;
+    --Text-gray: #d1d5db;
+
+    --Color-add: #22c55e;
+    --Color-edit: #f97316;
+    --Color-delete: #ef4444;
+    --Color-save: #0ea5e9;
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+//Bootstrap
+.container-fluid,
+.container{
+    padding: 0;
+    margin: 0;
+} 
+
+// Margin
+
+
+// Title
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
+
+h1{
+    font-size: 24px;
+}
+
+h2{
+    font-size: 20px;
+}
+
+h3{
+    font-size: 18px;
+}
+
+h4{
+    font-size: 16px;
+}
+
+h5{
+    font-size: 14px;
+}
+
+h6{
+    font-size: 12px;
+}
+
+// Ul li
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li{
+        font-size: 14px;
+        margin: 0;
+    }
+}
+
+a{
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--Text-white);
+}
+
+
+// Table
+.dTable {
+    .p-datatable{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        .p-datatable-table-container{
+            .p-datatable-table{
+                .p-datatable-thead{
+                    tr{
+                        height: 35px;
+                        th{
+                            background-color: var(--Bg-main-color);
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: var(--Text-white);
+                            border-right: 1px solid var(--Text-white);
+                            padding: 0;
+                            &:last-child{
+                                border-right: none;
+                            }
+
+                            p-columnfilter{
+                                .p-datatable-filter{
+                                    p-button{display: none;}
+
+                                    p-columnfilterformelement{
+                                        height: 30px;
+                                        .p-inputtext{
+                                            height: 100%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .p-datatable-tbody{
+                    tr{
+                        height: 30px;
+
+                        td{
+                            padding: 0;
+                            font-size: 14px;
+                            font-weight: 500;
+
+                            border-right: 1px solid #e2e8f0;   
+                            padding: 0 15px;
+                            &:last-child{
+                                border-right: none;
+                            }
+                        }
+                    }
+
+                    .p-datatable-row-selected{
+                        background-color: var(--Bg-pink);
+                        color: var(--Text-black);
+                    }
+                }
+            }
+        }
+
+        p-paginator{
+            .p-paginator{
+                .p-paginator-pages{
+                    button{
+                        background-color: var(--Bg-main-color);
+                        color: var(--Text-pink);
+                    }
+                }
+                p-select{
+                    height: 30px;
+                    border-radius: 0;
+                    .p-select-label{
+                        font-size: 14px;
+                        padding: 0 2px;
+                        align-content: center;
+                    }
+
+                    .p-overlay{
+                        p-selectitem{
+                            li.p-select-option-selected{
+                                color: var(--Text-black);
+                                background-color: var(--Bg-pink);
+                            }
+                        }
+                    }
+
+                    &:focus{
+                        border-color: var(--Text-pink);
+                    }
+                }
+                p-select.p-focus{
+                    border-color: var(--Text-pink);
+                }
+            }
+        }
+    }
+}
+
+// Path
+.path{
+    width: 100%;
+    height: 50px;
+
+    ul{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        li{
+            margin: 0 5px;
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            align-items: center;
+            font-weight: 500;
+            font-size: 14px;
+            
+            &::after{
+                content: '>';
+                color: var(--Bg-main-color);
+                margin-left: 5px;
+            }
+
+            &:last-child{
+                &::after{
+                    content: '';
+                }
+            }
+        }
+    }
+}
+
+// Input
+.p-inputtext{
+    height: 30px !important;
+    border-radius: 0 !important;
+    font-size: 13px !important;
+    color: var(--Text-black) !important;
+    padding: 0 10px !important;
+}
+
+.p-inputtext:focus{
+    border-color: var(--Text-pink) !important;
+}
+
+// Button
+.button {
+    min-width: 100px;
+    height: 30px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 6px;
+    color: var(--Text-white);
+    font-size: 14px;
+    font-weight: 500;
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+
+    i{
+        font-size: 14px;
+    }
+
+    &:hover{
+        opacity: 0.8;
+    }
+
+    &:disabled{
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+}
+
+.button.add{
+    background-color: var(--Color-add);
+}
+.button.edit{
+    background-color: var(--Color-edit);
+}
+.button.delete {
+    background-color: var(--Color-delete);
+}
+.button.save{
+    background-color: var(--Color-save);
+}
+.button.close{
+    background-color: var(--Bg-main-color);
+}
+
+
+
+
+// Form Add End Edit
+.formAddEndEdit{
+    .p-dialog-top{
+        .p-dialog{
+            .p-dialog-header{
+                height: 50px;
+                padding: 10px;
+                background-color: var(--Bg-main-color);
+                color: var(--Text-pink);
+
+                span{
+                    font-weight: 500;
+                    font-size: 16px;
+                }
+
+                svg{
+                    path{
+                        fill: var(--Color-delete);
+                    }
+                }
+            }
+            .p-dialog-content{
+                padding: 10px;
+                
+                .container{
+                    margin: 20px 0;
+                }
+
+                
+            }
+        }
+        
+    }
+   
+}
+
+
+// Confirm Dialog
+.p-confirmdialog{
+    .p-dialog-header{
+        height: 50px;
+        padding: 10PX;
+
+        span{
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+
+    .p-dialog-footer{
+        button{
+            height: 30px;
+            min-width: 100px;
+
+            span{
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+// Sidebar
+:host{
+    height: 100%;
+}
+
+.screenContent{
+    width: 100%;
+    .header{
+        height: 50px;
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+
+        .right{
+            align-content: center;
+            position: relative;
+            img{
+                cursor: pointer;
+            }
+            .listSetting{
+                position: absolute;
+                right: 0;
+                z-index: 1000;
+                width: 300px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                background-color: var(--Text-white);
+                border-radius: 5px;
+                
+                .info{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 15px;
+                    padding: 15px;
+                    border-bottom: 1px solid var(--Text-gray);
+                    cursor: pointer;
+                }
+
+                .footer{
+                    button{
+                        border: none;
+                        outline: none;
+                        background-color: var(--Bg-main-color);
+                        color: var(--Text-white);
+                        width: 100%;
+                        height: 40px;
+                        border-bottom-right-radius: 5px;
+                        border-bottom-left-radius: 5px;
+
+                        &:hover{
+                            background-color: var(--Color-delete);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

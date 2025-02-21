@@ -1,0 +1,106 @@
+.sidebar {
+  width: 250px;
+  background: var(--Bg-main-color);
+  color: white;
+  height: 100vh;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+
+  .toggle-btn{
+    position: absolute;
+    border: none;
+    background-color: var(--Text-white);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    right: -25px;
+    z-index: 1000;
+  }
+
+    .head {
+      height: 50px;
+      cursor: pointer;
+  
+      h1 {
+        text-align: center;
+        font-family: initial;
+        font-weight: 700;
+        color: var(--Text-white);
+      }
+  
+      .view {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      }
+  
+      .sidebar:not(.closed) .view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+  
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 0.5s forwards ease-in-out;
+      }
+  
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+  
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+  
+    }
+
+  &.closed {
+    width: 60px;
+
+    .menu{
+      .menu-item{
+        justify-content: center;
+      }
+    }
+  }
+
+  .menu {
+    padding: 20px;
+
+    .menu-item {
+      cursor: pointer;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s ease;
+
+      &:hover {
+        color: var(--Text-pink);
+      }
+    }
+
+    .submenu {
+      list-style: none;
+      padding-left: 20px;
+      margin: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+
+      li{
+        cursor: pointer;
+        height: 30px;
+        align-content: center;
+
+        &:hover{
+          a{color: var(--Text-pink);}
+        }
+      }
+    }
+  }
+}

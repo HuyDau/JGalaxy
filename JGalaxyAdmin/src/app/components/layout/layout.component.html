@@ -1,25 +1,32 @@
-<mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <ul>
-        <li><a routerLink="/category" routerLinkActive="active" ariaCurrentWhenActive="page">Category</a></li>
-        <li><a routerLink="/product" routerLinkActive="active" ariaCurrentWhenActive="page">Product</a></li>
-      </ul>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-      <mat-toolbar>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>My App</span>
-        <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
-        </button>
-      </mat-toolbar>
+<div class="container-fluid d-flex h-100">
+  <app-sidebar></app-sidebar>
+  <div class="screenContent">
+    <div class="header">
+        <div class="left"></div>
+        <div class="right">
+          <div class="user">
+            <img src="../../../assets/images/icon/profile.png" alt="" (click)="toggleSettings($event)">
+
+            @if (isSettingOpen) {
+              <div class="listSetting">
+                <div class="info" [routerLink]="['/user-info']">
+                  <div class="icon">
+                    <img src="../../../assets/images/icon/profile.png">
+                  </div>
+                  <div class="userInfo">
+                    <h4>{{userInfo.name}}</h4>
+                    <h6>{{userInfo.email}}</h6>
+                  </div>
+                </div>
+
+                <div class="footer">
+                  <button (click)="onLogOut()">Logout</button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
     </div>
-  
-  </mat-drawer-container>
+    <router-outlet></router-outlet>
+  </div>
+</div>

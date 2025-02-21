@@ -1,1 +1,50 @@
-<p>category works!</p>
+<div class="container-fluid d-flex justify-content-center h-100">
+    <div class="container h-100 ">
+        <p-table #dt2 [value]="listCategories" dataKey="id" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]"
+            selectionMode="single"
+            [(selection)]="selectedCategories"
+            [loading]="loading" [paginator]="true" [globalFilterFields]="['id', 'name']"
+            [style]="{ 'height': '100%' }"
+            scrollable="true" scrollHeight="flex"
+            class="dTable m-4"
+            >
+           
+            <ng-template #header>
+                <tr>
+                    <th class="text-center" style="width: 10%">Id</th>
+                    <th class="text-center" style="width: 90%">Name</th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-category>
+                <tr [pSelectableRow]="category">
+                    <td class="text-center">{{ category.id }}</td>
+                    <td >{{ category.name }}</td>
+                </tr>
+            </ng-template>
+            <ng-template #emptymessage>
+                <tr>
+                    <td colspan="2">No customers found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <div class="footer">
+            <button class="button add" (click)="showDialog('add')">
+                <i class="pi pi-plus"></i>
+                <div class="text">Add</div>
+            </button>
+            <button class="button edit" (click)="showDialog('edit', selectedCategories.id)" [disabled]="!selectedCategories">
+                <i class="pi pi-pen-to-square "></i>
+                <div class="text">Edit</div>
+            </button>
+            <button class="button delete" (click)="delete($event, selectedCategories.id)" [disabled]="!selectedCategories">
+                <i class="pi pi-trash "></i>
+                <div class="text">Delete</div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<p-toast />
+<p-confirmdialog />
+<app-add-and-edit-category (modalSave)="getAllCategories()" [(visible)]="visible" [mode]="mode" [categoryId]="categoryId"></app-add-and-edit-category>
